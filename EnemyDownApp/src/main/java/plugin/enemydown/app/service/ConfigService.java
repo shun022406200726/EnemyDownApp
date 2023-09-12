@@ -3,6 +3,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import plugin.enemydown.app.mapper.GameConfigMapper;
 import plugin.enemydown.app.mapper.data.GameConfig;
+import plugin.enemydown.app.mapper.data.SpawnEnemy;
 
 @Service
 public class ConfigService {
@@ -12,7 +13,16 @@ public class ConfigService {
   public ConfigService(GameConfigMapper mapper) {
     this.mapper = mapper;
   }
-  public List<GameConfig>searchConfig(){
+  public List<GameConfig> searchConfig(){
     return mapper.selectConfigList();
+  }
+
+  public GameConfig searchConfig(String difficulty){
+    return mapper.selectConfig(difficulty);
+  }
+
+  public List<SpawnEnemy>searchSpawnEnemyList(String difficulty){
+    return mapper.selectSpawnEnemyList(difficulty);
+
   }
 }
